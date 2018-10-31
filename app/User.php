@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'email', 'password', 'survey'
     ];
 
     /**
@@ -27,4 +27,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function genres()
+    {
+        return $this->belongsToMany('App\Genre');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag');
+    }
 }
