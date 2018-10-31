@@ -9,7 +9,7 @@
             <ul>
                 <li><a href="resultados.php">Mis resultados</a></li>
                 <li class="borde-derecho-blanco"><a href="#">Mis estadisticas</a></li>
-                <li><a href="logout.php" class="enlace-azul">Cerrar sesión</a></li>
+                <li><a href="/logout" class="enlace-azul">Cerrar sesión</a></li>
             </ul>
         </nav>
         @else
@@ -18,7 +18,7 @@
                     <li><a href="index.php">Inicio</a></li>
                     <li><a href="index.php#acercade">Acerca de</a></li>
                     <li class="borde-derecho-blanco"><a href="index.php#FAQ">FAQ's</a></li>
-                    <li><a href="login.php" class="enlace-azul">Iniciar sesión</a></li>
+                    <li><a href="/login" class="enlace-azul">Iniciar sesión</a></li>
                 </ul>
             </nav>
         @endauth

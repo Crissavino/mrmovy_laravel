@@ -18,6 +18,7 @@ class CreateDatabase extends Migration
          Schema::create('movies', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->string('cover');
             $table->smallInteger('year');
             $table->smallInteger('length');
             $table->text('resume');

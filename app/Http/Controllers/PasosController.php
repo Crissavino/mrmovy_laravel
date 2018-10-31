@@ -10,9 +10,7 @@ class PasosController extends Controller
     {
     	$datosGenero = \App\Genre::all();
 
-    	return view('paso1', [
-							'datosGenero' => $datosGenero,
-							]);
+    	return view('paso1', ['datosGenero' => $datosGenero]);
     }
 
     public function insertPaso1()
@@ -25,7 +23,7 @@ class PasosController extends Controller
 			],
 			[
 				'genre_id.required' => 'Tenes que seleccionar generos',
-				'genre_id.size' => 'Seleccioná 3 géneros que te gusten'
+				'genre_id.size' => 'Debes elegir 3 géneros que te gusten'
 			]);
 
 		$generos = request()->input('genre_id');
@@ -41,9 +39,7 @@ class PasosController extends Controller
     {
     	$datosTag = \App\Tag::all();
     	;
-    	return view('paso2', [
-							'datosTag' => $datosTag,
-							]);
+    	return view('paso2', ['datosTag' => $datosTag]);
     }
 
     public function insertPaso2()
@@ -56,15 +52,18 @@ class PasosController extends Controller
 			],
 			[
 				'tag_id.required' => 'Tenes que seleccionar temáticas',
-				'tag_id.size' => 'Seleccioná 3 temáticas que te gusten'
+				'tag_id.size' => 'Debes elegir 3 temáticas que te gusten'
 			]);
 
 		$tags = request()->input('tag_id');
 
 		$usuario = \App\User::find($userId);
 
+		$usuario->survey = 1;
+		$usuario->save();
+
 		$guardoTags = $usuario->tags()->sync($tags);
 
-    	return redirect('paso3');
+    	return redirect('resultados');
     }
 }

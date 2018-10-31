@@ -9,7 +9,7 @@
             <div class="texto-formulario">
                 <h2><span>Hola</span>, logueate para continuar</h2>
                 <p>Bienvenido, ingresa para ver tus películas.</p>
-                <a href="#">Olvidé la contraseña</a> / <a href="registro.php">Registrarse</a>
+                <a href="#">Olvidé la contraseña</a> / <a href="/register">Registrarse</a>
             </div>
 
             <div class="formulario">

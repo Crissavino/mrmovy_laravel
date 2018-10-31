@@ -9,7 +9,7 @@
         <div class="texto-formulario">
             <h2><span>Hola</span>, registrate para comenzar</h2>
             <p>La contraseña debe contener al menos 8 caracteres y contener al menos un número y una letra</p>
-            <a href="login.php">Ya tengo una cuenta</a>
+            <a href="/login">Ya tengo una cuenta</a>
         </div>
 
         <div class="formulario">

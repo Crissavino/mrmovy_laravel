@@ -69,6 +69,10 @@ class TagSeeder extends Seeder
         		'name' => 'Pelea'
         	],
 
+            [
+                'name' => 'Psicologica'
+            ],
+
 
         ]);
     }
