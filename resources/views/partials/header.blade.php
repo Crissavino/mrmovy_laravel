@@ -1,13 +1,13 @@
  <header class="fondo-negro">
     <div class="contenedor">
-        <a href="https://mrmovy.com"><img src="images/logo.png" alt="" class="logo"></a>
+        <a href="https://mrmovy.com"><img src="/images/logo.png" alt="" class="logo"></a>
         <div class="menu-movil">
             <img src="images/menu-movil.png" alt="">
         </div>
         @auth
             <nav class="menu-principal">
             <ul>
-                <li><a href="resultados.php">Mis resultados</a></li>
+                <li><a href="/resultados">Mis resultados</a></li>
                 <li class="borde-derecho-blanco"><a href="#">Mis estadisticas</a></li>
                 <li><a href="/logout" class="enlace-azul">Cerrar sesión</a></li>
             </ul>

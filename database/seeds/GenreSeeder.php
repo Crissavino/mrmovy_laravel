@@ -46,7 +46,7 @@ class GenreSeeder extends Seeder
         	],
 
         	[
-        		'name' => 'Crimen'
+        		'name' => 'Suspenso'
         	],
 
         	[

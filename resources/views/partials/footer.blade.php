@@ -4,7 +4,7 @@
         @auth
             <nav class="menu-footer">
                 <ul>
-                    <li> <a href="resultados.php">Mis resultados</a> </li>
+                    <li> <a href="/resultados">Mis resultados</a> </li>
                     <li> <a href="#">Mis estadísticas</a> </li>
                     <li> <a href="/logout" class="enlace-azul">Cerrar sesión</a> </li>
                 </ul>

@@ -24,6 +24,7 @@ Route::post('paso2', 'PasosController@insertPaso2');
 Auth::routes();
 
 Route::get('/', 'StaticController@index');
+Route::get('info/{id}', 'StaticController@info')->middleware('auth');
 
 Route::get('/logout', 'Auth\LoginController@logout');
 

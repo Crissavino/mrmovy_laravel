@@ -36,15 +36,25 @@
 				   		@endforeach
 				    </strong></p>
 				    <div class="botones">
-				        <a href="info.php"><div class="boton-gris">
-				          Más info
-				        </div></a>
-				        <div class="boton-gris boton-netflix">
-				          <img src="images/logo-netflix.png" alt="">
-				        </div>
-				        <div class="boton-gris trailer">
-				          <img src="images/ver-trailer.png" alt="">Trailer
-				        </div>
+				        <a href="/info/{{ $pelicula->id }}">
+				        	<div class="boton-gris">Más info</div>
+				    	</a>
+				    	@if ($pelicula->netflix)
+							<a href="{{ $pelicula->netflix }}" target="_blank">
+								<div class="boton-gris boton-netflix">
+									<img src="images/logo-netflix.png" alt="">
+								</div>
+							</a>
+				    	@endif
+				        
+				        @if ($pelicula->trailer)
+							<a href="{{ $pelicula->trailer }}" target="_blank">
+						        <div class="boton-gris trailer">
+						         	<img src="images/ver-trailer.png" alt="">Trailer
+						        </div>
+				        	</a>
+				    	@endif
+				        
 				        <div class="lavi boton">
 				          La ví
 				        </div>

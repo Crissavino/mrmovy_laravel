@@ -10,4 +10,12 @@ class StaticController extends Controller
     {
     	return view('index');
     }
+
+    public function info($id)
+    {
+    	$movie = \App\Movie::find($id);
+
+    	return view('info', ['movie' => $movie]);
+    }
+
 }
