@@ -9,14 +9,14 @@
 	@section('container')
 
 		<section class="contenedor">
-		<section class="generos">
+			<section class="generos">
 
-			<div class="notificacion">
-				<p><span>¡Bienvenido {{ auth()->user()->email }}!</span> Ayúdanos a configurar tus gustos y preferencias, será breve :)</p>
-			</div>
+				<div class="notificacion">
+					<p><span>¡Bienvenido {{ auth()->user()->email }}!</span> Ayúdanos a configurar tus gustos y preferencias, será breve :)</p>
+				</div>
 
-			<h2><span>Paso 1 de 3:</span> elije tus géneros preferidos</h2>
-			<p>Elije tus géneros de preferencia, <b>solo puedes elegir hasta 3 géneros.</b></p>
+				<h2><span>Paso 1 de 3:</span> elije tus géneros preferidos</h2>
+				<p>Elije tus géneros de preferencia, <b>solo puedes elegir hasta 3 géneros.</b></p>
 
 				<form class="" action="" method="post">
 					{{ csrf_field() }}

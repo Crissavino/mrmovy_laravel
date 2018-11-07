@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Movie extends Model
 {
 
-    protected $fillable = ['title', 'cover', 'year', 'length', 'resume', 'netfilix', 'trailer'];
+    protected $fillable = ['title', 'cover', 'year', 'length', 'resume', 'netflix', 'trailer'];
+    // protected $fillable = ['title', 'year', 'length', 'resume', 'netflix', 'trailer'];
 
     public function actors()
     {

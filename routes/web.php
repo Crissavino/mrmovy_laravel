@@ -21,6 +21,9 @@ Route::post('paso1', 'PasosController@insertPaso1');
 Route::get('paso2', 'PasosController@createPaso2')->middleware('auth');
 Route::post('paso2', 'PasosController@insertPaso2');
 
+Route::get('carga', 'CargaController@createCarga')->middleware('auth');
+Route::post('carga', 'CargaController@insertCarga');
+
 Auth::routes();
 
 Route::get('/', 'StaticController@index');
