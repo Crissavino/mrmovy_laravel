@@ -60,6 +60,7 @@ class CargaController extends Controller
 
 		$path = request()->file('cover')->storeAs('images/covers', $titulo);
 
+
 		$data['cover'] = $path;
 
 		$guardoPelicula = \App\Movie::create($data);

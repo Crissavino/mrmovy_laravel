@@ -15,7 +15,7 @@
 
 		@foreach ($peliculas as $pelicula)
 			<article class="tarjeta-resultados">
-				<img src="{{ $pelicula->cover }}" class="tarjeta-pelicula" alt="">
+				<img src="/storage/{{ $pelicula->cover }}" class="tarjeta-pelicula" alt="">
 				<div class="pelicula">
 				    <h2>{{ $pelicula->title }}</h2>
 				    <p class="fecha">{{ $pelicula->year }}</p>

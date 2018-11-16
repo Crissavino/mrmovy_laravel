@@ -66,4 +66,13 @@ class PasosController extends Controller
 
     	return redirect('resultados');
     }
+
+    public function createPaso3()
+    {
+
+    	$peliculas = \App\Movie::all();
+
+    	return view('paso3-2', ['peliculas' => $peliculas]);
+    }
+
 }
