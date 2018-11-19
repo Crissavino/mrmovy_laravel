@@ -10,7 +10,6 @@
 
 	<section class="contenedor">
 
-
 		<h2 class="titulo-resultados"><span>¡Felicitaciones!</span> Estas son nuestras recomendaciones según tus gustos, prometemos no defraudarte :)</h2>
 
 		@foreach ($peliculas as $pelicula)

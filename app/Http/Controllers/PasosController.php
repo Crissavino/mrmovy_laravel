@@ -57,22 +57,108 @@ class PasosController extends Controller
 
 		$tags = request()->input('tag_id');
 
-		$usuario = \App\User::find($userId);
-
-		$usuario->survey = 1;
-		$usuario->save();
+        $usuario = \App\User::find($userId);
 
 		$guardoTags = $usuario->tags()->sync($tags);
 
-    	return redirect('resultados');
+    	return redirect('paso3');
     }
 
     public function createPaso3()
     {
 
-    	$peliculas = \App\Movie::all();
+    	$peliculas = \App\Movie::all()->random(10);;
+    	$userGenres = auth()->user()->genres;
+        $userTags = auth()->user()->tags;
+        $score = \App\Score::where('user_id', auth()->user()->id)->first();
 
-    	return view('paso3-2', ['peliculas' => $peliculas]);
+        if (is_null($score)) {
+            
+            for ($i=0; $i < 3 ; $i++) { 
+                $data = [
+                    'user_id' => auth()->user()->id,
+                    'genre_id' => $userGenres[$i]->id,
+                    'genre_score' => 0,
+                    'tag_id' => $userTags[$i]->id,
+                    'tag_score' => 0,
+                ];
+
+                $guardoScore = \App\Score::create($data);
+
+            }
+        }
+
+
+
+    	return view('paso3', ['peliculas' => $peliculas, 'userGenres' => $userGenres, 'userTags' => $userTags]);
+
+    }
+
+    public function insertPaso3()
+    {
+
+        $userGenres = auth()->user()->genres;
+
+        $datos = json_decode($_POST['datos'], true);
+
+
+        $scores = auth()->user()->scores;
+
+        foreach ($scores as $key => $value) {
+
+           if ($value->genre_id == $datos['genreId']) {
+                $value->genre_score += $datos['score'];
+                $value->save();
+           }
+        }
+
+        
+    }
+
+    public function insertPaso3Tag()
+    {
+        $userTags = auth()->user()->tags;
+
+        $datos = json_decode($_POST['datos'], true);
+
+        $scores = auth()->user()->scores;
+
+        foreach ($scores as $key => $value) {
+
+           if ($value->tag_id == $datos['tagId']) {
+                $value->tag_score += $datos['score'];
+                $value->save();
+           }
+        }
+    }
+
+    public function insertFinal()
+    {   
+        $usuario = \App\User::find(auth()->user()->id);
+        $usuario->survey = 1;
+        $usuario->save();
+
+        $generoMasVotado = 0;
+        $puntajeGenero = 0;
+        $tagMasVotado = 0;
+        $puntajeTag = 0;
+
+        foreach ($usuario->scores as $key => $score) {
+           if ($score->tag_score > $puntajeTag) {
+               $tagMasVotado = $score->tag_id;
+               $puntajeTag = $score->tag_score;
+           }
+
+           if ($score->genre_score > $puntajeGenero ) {
+               $generoMasVotado = $score->genre_id;
+               $puntajeGenero = $score->genre_score;
+           }
+        }
+
+        $usuario->tag_id = $tagMasVotado;
+        $usuario->genre_id = $generoMasVotado;
+        $usuario->save();
+
     }
 
 }

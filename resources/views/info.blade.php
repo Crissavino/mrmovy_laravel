@@ -8,7 +8,7 @@
 
 	<div class="sidebar">
 	    <div class="portada-sidebar">
-	        <img src="{{ $movie->cover }}" alt="" class="portada-pelicula">
+	        <img src="/storage/{{ $movie->cover }}" alt="" class="portada-pelicula">
 	    </div>
 
 	    <div class="botones-sidebar">

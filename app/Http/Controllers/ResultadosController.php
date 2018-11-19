@@ -10,6 +10,41 @@ class ResultadosController extends Controller
     {
     	$peliculas = \App\Movie::all();
 
-    	return view('resultados', ['peliculas' => $peliculas]);
+    	$userGenre = auth()->user()->genres;
+
+    	$array = [];
+
+    	foreach ($peliculas as $keyP => $pelicula) {
+    		foreach ($pelicula->genres as $key => $genre) {
+    			foreach ($pelicula->tags as $key => $tag) {
+    				if (auth()->user()->genre_id == $genre->id && auth()->user()->tag_id == $tag->id) {
+    					array_push($array, $pelicula);
+    					$peliculas->forget($keyP);
+    				}
+    			}
+			}
+		}
+
+		foreach ($peliculas as $keyP => $pelicula) {
+    		foreach ($pelicula->genres as $key => $genre) {
+    				if (auth()->user()->genre_id == $genre->id) {
+    					array_push($array, $pelicula);
+    					$peliculas->forget($keyP);
+
+    				}
+			}
+		}
+
+		foreach ($peliculas as $keyP => $pelicula) {
+    			foreach ($pelicula->tags as $key => $tag) {
+    				if (auth()->user()->tag_id == $tag->id) {
+    					array_push($array, $pelicula);
+    					$peliculas->forget($keyP);
+
+    				}
+    			}
+		}
+
+    	return view('resultados', ['peliculas' => $array]);
     }
 }

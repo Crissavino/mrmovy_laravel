@@ -22,6 +22,11 @@ Route::get('paso2', 'PasosController@createPaso2')->middleware('auth');
 Route::post('paso2', 'PasosController@insertPaso2');
 
 Route::get('paso3', 'PasosController@createPaso3')->middleware('auth');
+Route::post('paso3', 'PasosController@insertPaso3');
+Route::post('paso3Tag', 'PasosController@insertPaso3Tag');
+Route::post('paso3Final', 'PasosController@insertFinal');
+
+
 
 Route::get('carga', 'CargaController@createCarga')->middleware('auth');
 Route::post('carga', 'CargaController@insertCarga');

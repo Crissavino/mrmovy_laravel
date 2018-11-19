@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->integer('genre_id')->unsigned()->nullable();
+            $table->integer('tag_id')->unsigned()->nullable();
             $table->boolean('survey')->default(0);
             $table->rememberToken();
             $table->timestampsTz();

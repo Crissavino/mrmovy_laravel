@@ -37,4 +37,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Tag');
     }
+
+    public function scores()
+    {
+        return $this->hasMany('App\Score');
+    }
 }
