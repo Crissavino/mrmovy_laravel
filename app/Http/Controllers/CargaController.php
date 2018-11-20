@@ -10,11 +10,14 @@ class CargaController extends Controller
     {
     	$datosTags = \App\Tag::all();
     	$datosGeneros = \App\Genre::all();
+    	$actores = \App\Actor::all();
+    	$productores = \App\Producer::all();
+
     	// $datosActores = \App\Actos::all();
     	// $datosProductores = \App\Producer::all();
 
     	return view('carga/peliculas', ['datosTags' => $datosTags,
-    						  'datosGeneros' => $datosGeneros]);
+    						  'datosGeneros' => $datosGeneros, 'actores' => $actores, 'producers' => $productores]);
     }
 
     public function insertCarga()
@@ -31,10 +34,8 @@ class CargaController extends Controller
 								'year' => 'required',
 								'length' => 'required',
 								'resume' => 'required',
-								'actor' => 'required',
-								'producer' => 'required',
-								'netflix' => 'url',
-								'trailer' => 'url',
+								'actor_id' => 'required',
+								'producer_id' => 'required',
 					    	],
 					    	[
 						    	'cover.required' => 'Esta campo es obligatorio',
@@ -45,10 +46,8 @@ class CargaController extends Controller
 								'year.required' => 'Esta campo es obligatorio',
 								'length.required' => 'Esta campo es obligatorio',
 								'resume.required' => 'Esta campo es obligatorio',
-								'actor.required' => 'Esta campo es obligatorio',
-								'producer.required' => 'Esta campo es obligatorio',
-								'netflix.url' => 'Debe ser una URL',
-								'trailer.url' => 'Debe ser una URL',
+								'actor_id.required' => 'Esta campo es obligatorio',
+								'producer_id.required' => 'Esta campo es obligatorio',
 					    	]);
 
 		$data = request()->all();
@@ -58,8 +57,9 @@ class CargaController extends Controller
 
 		$titulo .=  '.' . request()->file('cover')->extension();
 
-		$path = request()->file('cover')->storeAs('images/covers', $titulo);
+		$path = request()->file('cover')->storeAs('public/images/covers', $titulo);
 
+		$path = str_replace('public', 'storage', $path);
 
 		$data['cover'] = $path;
 
@@ -72,6 +72,15 @@ class CargaController extends Controller
 		$arrayGeneros = $data['genre_id'];
 
 		$guardoGeneros = $pelicula->genres()->sync($arrayGeneros);
+
+		$arrayActores = $data['actor_id'];
+
+		$guardoActores = $pelicula->actors()->sync($arrayActores);
+
+		$arrayProductores = $data['producer_id'];
+
+		$guardoProductores = $pelicula->producers()->sync($arrayProductores);
+
 
 		$arrayTags = $data['tag_id'];
 
@@ -96,9 +105,29 @@ class CargaController extends Controller
     	return view('carga/actor');
     }
 
+    public function insertActor()
+    {
+    	$data = request()->all();
+
+		$guardoActor = \App\Actor::create($data);
+    	
+    	return redirect('carga/actor');
+
+    }
+
     public function cargaProductor()
     {
     	return view('carga/productor');
     	
+    }
+
+     public function insertProductor()
+    {
+    	$data = request()->all();
+
+		$guardoActor = \App\Producer::create($data);
+    	
+    	return redirect('carga/productor');
+
     }
 }

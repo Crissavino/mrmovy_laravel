@@ -6,6 +6,13 @@
 
 @section('title', 'Carga de Peliculas')
 
+@section('head')
+
+<link href="/css/multi-select.css" media="screen" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+@endsection
+
 @section('container')
 	<section class="contenedor">
 		<h1 class="titulo-carga">Cargá una película</h1>
@@ -68,16 +75,32 @@
 	        <label for="">Resúmen: </label><br>
 	        {!! $errors->first('resume', '<p class="help-block" style="color:red;padding-top:25px";>:message</p>') !!}
 	        <textarea name="resume" rows="8" cols="80" value="{{old('resume')}}"></textarea><br>
+
+
+	        <label for="keep-order">Actores: </label><br>
+	        <br>
+
+			<select id='keep-order' multiple='multiple' name="actor_id[]">
+				@foreach ($actores as $actor)
+					<option value='{{ $actor->id }}'>{{ $actor->name }}</option>
+				@endforeach
+			</select>
+	        <br>
 	        
 
-	        <label for="">Actores: </label><br>
-	        {!! $errors->first('actor', '<p class="help-block" style="color:red;padding-top:25px";>:message</p>') !!}
-	        <input type="text" name="actor" value="{{old('actor')}}"><br>
+	        {!! $errors->first('actor_id', '<p class="help-block" style="color:red;padding-top:25px";>:message</p>') !!}
 	        
 
-	        <label for="">Producción: </label><br>
-	        {!! $errors->first('producer', '<p class="help-block" style="color:red;padding-top:25px";>:message</p>') !!}
-	        <input type="text" name="producer" value="{{old('producer')}}"><br>
+	        <label for="">Productores: </label><br>
+	        <br>
+			<select id='keep-order2' multiple='multiple' name="producer_id[]">
+				@foreach ($producers as $producer)
+					<option value='{{ $producer->id }}'>{{ $producer->name }}</option>
+				@endforeach
+			</select>
+
+	        {!! $errors->first('producer_id', '<p class="help-block" style="color:red;padding-top:25px";>:message</p>') !!}
+	        <br>
 	        
 
 	        <label for="">Enlace a Netflix: </label><br>
@@ -93,4 +116,8 @@
 	        <button type="boton" class="boton" name="button">Enviar Película</button>
 		</form>
 	</section>
+
+	<script src="/js/jquery.multi-select.js" type="text/javascript"></script>
+	<script src="/js/multiselect.js" type="text/javascript"></script>
+	
 @endsection

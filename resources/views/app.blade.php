@@ -4,6 +4,7 @@
 	<title>@yield('title')</title>
 	<meta charset="utf-8">
 	@include('partials.head')
+	@yield('head')
 </head>
 <body>
 

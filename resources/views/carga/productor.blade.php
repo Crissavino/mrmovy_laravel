@@ -4,15 +4,16 @@
 
 @extends('app')
 
-@section('title', 'Carga de Actores')
+@section('title', 'Carga de Productores')
 
 @section('container')
 	<section class="contenedor">
 		<h1 class="titulo-carga">Cargar un productor</h1>
-		<form class="formulario-carga">
+		<form action="" class="formulario-carga" method="POST">
+			@csrf
 			<label for="actor">Nombre del productor</label>
 			<br>
-			<input type="" name="actor" id="actor">
+			<input type="" name="name" id="actor">
 			<br>
 			<button type="submit" class="boton">Cargar productor</button>
 		</form>

@@ -22,8 +22,8 @@ class CreateDatabase extends Migration
             $table->smallInteger('year');
             $table->smallInteger('length');
             $table->text('resume');
-            $table->string('netflix')->nullable;
-            $table->string('trailer')->nullable;
+            $table->string('netflix')->nullable();
+            $table->string('trailer')->nullable();
             $table->timestampsTz();
 
 

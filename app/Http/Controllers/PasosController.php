@@ -67,7 +67,8 @@ class PasosController extends Controller
     public function createPaso3()
     {
 
-    	$peliculas = \App\Movie::all()->random(10);;
+    	$peliculas = \App\Movie::all()->random(10);
+        //Falta hacer la logica que se muestren 10 según el genero y tag seleccionado en paso 1 y 2
     	$userGenres = auth()->user()->genres;
         $userTags = auth()->user()->tags;
         $score = \App\Score::where('user_id', auth()->user()->id)->first();
@@ -87,8 +88,6 @@ class PasosController extends Controller
 
             }
         }
-
-
 
     	return view('paso3', ['peliculas' => $peliculas, 'userGenres' => $userGenres, 'userTags' => $userTags]);
 

@@ -14,7 +14,7 @@
 
 		@foreach ($peliculas as $key => $pelicula)
 			<article class="tarjeta-resultados tarjeta{{ $key }}">
-				<img src="/storage/{{ $pelicula->cover }}" class="tarjeta-pelicula" alt="">
+				<img src="{{ asset($pelicula->cover) }}" class="tarjeta-pelicula" alt="">
 				<div class="pelicula">
 				    <h2>{{ $pelicula->title }}</h2>
 				    <p class="fecha">{{ $pelicula->year }}</p>
@@ -54,7 +54,7 @@
 				        	</a>
 				    	@endif
 				        
-				        <div class="lavi-boton{{ $key }}">
+				        <div class="lavi boton">
 				          La ví
 				        </div>
 				    </div>

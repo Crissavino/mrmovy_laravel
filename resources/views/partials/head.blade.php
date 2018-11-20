@@ -4,4 +4,3 @@
 <link rel="stylesheet" href="/css/media.css">
 <link rel="icon" type="image/png" href="/images/favicon.png" />
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
