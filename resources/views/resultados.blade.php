@@ -12,8 +12,8 @@
 
 		<h2 class="titulo-resultados"><span>¡Felicitaciones!</span> Estas son nuestras recomendaciones según tus gustos, prometemos no defraudarte :)</h2>
 
-		@foreach ($peliculas as $pelicula)
-			<article class="tarjeta-resultados">
+		@foreach ($peliculas as $key => $pelicula)
+			<article class="tarjeta-resultados tarjeta{{ $key }}">
 				<img src="/storage/{{ $pelicula->cover }}" class="tarjeta-pelicula" alt="">
 				<div class="pelicula">
 				    <h2>{{ $pelicula->title }}</h2>
@@ -54,7 +54,7 @@
 				        	</a>
 				    	@endif
 				        
-				        <div class="lavi boton">
+				        <div class="lavi-boton{{ $key }}">
 				          La ví
 				        </div>
 				    </div>

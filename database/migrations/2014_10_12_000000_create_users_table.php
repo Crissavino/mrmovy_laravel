@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->integer('genre_id')->unsigned()->nullable();
             $table->integer('tag_id')->unsigned()->nullable();
             $table->boolean('survey')->default(0);
+            $table->boolean('is_admin')->default(0);
             $table->rememberToken();
             $table->timestampsTz();
         });

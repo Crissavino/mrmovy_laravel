@@ -31,6 +31,11 @@ Route::post('paso3Final', 'PasosController@insertFinal');
 Route::get('carga', 'CargaController@createCarga')->middleware('auth');
 Route::post('carga', 'CargaController@insertCarga');
 
+Route::get('carga/actor', 'CargaController@cargaActor')->middleware('auth');
+Route::get('carga/productor', 'CargaController@cargaProductor')->middleware('auth');
+
+
+
 Auth::routes();
 
 Route::get('/', 'StaticController@index');

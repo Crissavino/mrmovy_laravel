@@ -13,7 +13,7 @@ class CargaController extends Controller
     	// $datosActores = \App\Actos::all();
     	// $datosProductores = \App\Producer::all();
 
-    	return view('carga', ['datosTags' => $datosTags,
+    	return view('carga/peliculas', ['datosTags' => $datosTags,
     						  'datosGeneros' => $datosGeneros]);
     }
 
@@ -33,8 +33,8 @@ class CargaController extends Controller
 								'resume' => 'required',
 								'actor' => 'required',
 								'producer' => 'required',
-								'netflix' => 'required',
-								'trailer' => 'required',
+								'netflix' => 'url',
+								'trailer' => 'url',
 					    	],
 					    	[
 						    	'cover.required' => 'Esta campo es obligatorio',
@@ -47,8 +47,8 @@ class CargaController extends Controller
 								'resume.required' => 'Esta campo es obligatorio',
 								'actor.required' => 'Esta campo es obligatorio',
 								'producer.required' => 'Esta campo es obligatorio',
-								'netflix.required' => 'Esta campo es obligatorio',
-								'trailer.required' => 'Esta campo es obligatorio',
+								'netflix.url' => 'Debe ser una URL',
+								'trailer.url' => 'Debe ser una URL',
 					    	]);
 
 		$data = request()->all();
@@ -90,4 +90,15 @@ class CargaController extends Controller
 
 		// return $path;
   //   }
+
+    public function cargaActor()
+    {
+    	return view('carga/actor');
+    }
+
+    public function cargaProductor()
+    {
+    	return view('carga/productor');
+    	
+    }
 }
