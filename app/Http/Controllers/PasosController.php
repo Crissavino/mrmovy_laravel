@@ -67,10 +67,36 @@ class PasosController extends Controller
     public function createPaso3()
     {
 
-    	$peliculas = \App\Movie::all()->random(10);
-        //Falta hacer la logica que se muestren 10 según el genero y tag seleccionado en paso 1 y 2
-    	$userGenres = auth()->user()->genres;
+    	$peliculas = \App\Movie::all();
+        $userGenres = auth()->user()->genres;
         $userTags = auth()->user()->tags;
+
+        $array = [];
+
+        foreach ($peliculas as $keyP => $pelicula) {
+           foreach ($userGenres as $key => $genreU) {
+               foreach ($userTags as $key => $tag) {
+                 foreach ($pelicula->genres as $key => $genre) {
+                    if ($genre->id == $tag->id && $genre->id == $genreU->id) {
+                        array_push($array, $pelicula);
+                        $peliculas->forget($keyP);
+                    }
+                 }
+               }
+           }
+        }
+
+        while (count($array) < 10) {
+           foreach ($peliculas as $key => $pelicula) {
+                array_push($array, $pelicula);
+                $peliculas->forget($keyP);
+
+                if (count($array) > 9 ) {
+                    break;
+                }
+           }
+        }
+
         $score = \App\Score::where('user_id', auth()->user()->id)->first();
 
         if (is_null($score)) {
@@ -89,7 +115,7 @@ class PasosController extends Controller
             }
         }
 
-    	return view('paso3', ['peliculas' => $peliculas, 'userGenres' => $userGenres, 'userTags' => $userTags]);
+    	return view('paso3', ['peliculas' => $array, 'userGenres' => $userGenres, 'userTags' => $userTags]);
 
     }
 
