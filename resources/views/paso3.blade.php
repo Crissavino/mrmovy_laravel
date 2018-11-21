@@ -23,15 +23,14 @@
 	<section class="contenedor">
 		<section class="generos">
 
-			<h2><span>Paso 3 de 3:</span> Un poco de lo que ya viste</h2>
-			<p>Cuéntanos un poco acerca de lo que ya viste</p>
+			<h2><span>Paso 3 de 3:</span> Cuéntanos un poco de lo que ya viste</h2>
 
 			<section class="tarjetas">
 
 				@foreach ($peliculas as $key => $pelicula)
 					<div class="tarjeta" id="tarjeta{{ $key }}" style="display: none;">
 						<div class="c1">
-							<img src="">
+							<img src="{{ asset($pelicula->cover) }}">
 						</div>
 
 						<ul style="display: none;">
@@ -52,22 +51,22 @@
 
 							<div class="botones">
 								<div class="boton-interno" id="la-vi-mg{{ $key }}">
-									<img src="">
+									<img src="/images/megusto.png">
 									La ví y me gustó
 								</div>
 
 								<div class="boton-interno" id="la-vi-mdi{{ $key }}">
-									<img src="">
+									<img src="/images/medaigual.png">
 									La ví y me da igual
 								</div>
 
 								<div class="boton-interno" id="la-vi-nmg{{ $key }}">
-									<img src="">
+									<img src="/images/nomegusto.png">
 									La ví y no me gustó
 								</div>
 
 								<div class="boton-interno" id="no-vi{{ $key }}">
-									<img src="">
+									<img src="/images/nolavi.png">
 									No la vi
 								</div>
 							</div>

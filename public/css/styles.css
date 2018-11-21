@@ -559,6 +559,7 @@
     font-weight: 400;
     float: left;
     padding-right: 10px;
+    width: 70%;
   }
 
   .pelicula p {
@@ -804,4 +805,94 @@
   width: 0;
   height: 0;
   opacity: 0;
+}
+
+/*TARJETAS PASO 3*/
+
+.generos h2 {
+  font-size: 30px;
+  color: #353535;
+  padding-top: 20px;
+}
+
+.generos h2 span {
+  color: #00c0f7;
+}
+
+.tematica h2 {
+  font-size: 30px;
+  color: #353535;
+  padding-top: 20px;
+}
+
+.tematica h2 span {
+  color: #00c0f7;
+}
+
+.tarjetas {
+  margin: 35px 0px;
+  overflow: hidden;
+  }
+
+.tarjetas .c1 {
+  width:250px;
+  float:left;
+}
+
+.tarjetas .c1 img {
+  width: 200px;
+  border-radius: 10px;
+}
+
+
+.tarjetas .c2 {
+  width: 600px;
+  float:left;
+}
+
+.tarjeta .c2 span {
+  color: #00c0f7;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.tarjeta .c2 h3 {
+  color: #353535;
+  font-size: 35px;
+}
+
+.tarjeta .c2 h3 span {
+  font-size: 12px;
+  color: #b5b5b5;
+}
+
+.tarjetas .c2 .botones {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px 0px 30px 30px;
+  margin-top: 30px;
+  display:inline-block;
+  border-box:box-sizing;
+}
+
+.tarjeta .botones .boton-interno {
+  float:left;
+  width: 44%;
+  margin-right: 30px;
+  background-color: #ebebeb;
+  border-radius: 5px;
+  margin-top: 15px;
+  padding: 20px;
+  font-size: 18px;
+  color:#555;
+  cursor: pointer;
+}
+
+.tarjeta .botones .boton-interno:hover {
+  background-color: #d6d6d6;
+}
+
+.tarjeta .botones .boton-interno img {
+  vertical-align: middle;
+  margin-right: 10px;
 }

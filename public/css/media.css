@@ -75,7 +75,7 @@
     }
 }
 
-@media (max-width:720px) {
+@media (max-width:768px) {
 
     /* HEADER */
     /* Oculto el menu para Desktop y muestro el menu tipo hamburguesa y lo acomodo con position relative */
@@ -224,6 +224,16 @@
       width: 25%;
     }
 
+  .tarjetas .c1 img {
+    margin-bottom: 30px;
+  }
+
+
+  .tarjetas .botones {
+    width: 90%;
+    display: inline-block;
+  }
+
 
 }
 
@@ -241,6 +251,25 @@
 
   .label-cbx {
     width: 30%;
+  }
+
+  .tarjetas .c2 {
+    width: 100%;
+  }
+
+  .tarjetas .c2 h3 {
+    width: 100%;
+  }
+
+  .tarjetas .botones {
+    width: 100%;
+    clear: both;
+    padding:40px;
+  }
+
+  .tarjetas .botones .boton-interno {
+    width: 90%;
+    margin: 5px 0px;
   }
 
 }
