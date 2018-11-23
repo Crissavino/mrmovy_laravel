@@ -67,51 +67,44 @@ class PasosController extends Controller
     public function createPaso3()
     {
 
-    	$peliculas = \App\Movie::all()->random(10);
+    	$peliculas = \App\Movie::all();
         $userGenres = auth()->user()->genres;
         $userTags = auth()->user()->tags;
 
-        // $array = [];
+        $array = [];
 
-        // foreach ($peliculas as $keyP => $pelicula) {
-        //    foreach ($userGenres as $key => $genreU) {
-        //        foreach ($userTags as $key => $tagU) {
-        //          foreach ($pelicula->genres as $keyG => $genre) {
-        //             foreach ($pelicula->tags as $keyT => $tag) {
-        //                 if ($tag->id == $tagU->id && $genre->id == $genreU->id) {
-        //                     array_push($array, $pelicula);
-        //                     $peliculas->forget($keyP);
-        //                     $peliculas->forget($keyG);
+        foreach ($peliculas as $keyP => $pelicula) {
+           foreach ($userGenres as $key => $genreU) {
+               foreach ($userTags as $keyTU => $tagU) {
+                 foreach ($pelicula->genres as $keyG => $genre) {
+                    foreach ($pelicula->tags as $keyT => $tag) {
+                        if ($tag->id == $tagU->id && $genre->id == $genreU->id) {
+                            array_push($array, $pelicula);
+                            $peliculas->forget($keyP);
+                            $pelicula->tags->forget($keyT);
+                            $pelicula->genres->forget($keyG);
+                        }
+                    }
+                 }
+               }
+           }
+        }
 
-        //                 }
-        //             }
-        //          }
-        //        }
-        //    }
-        // }
 
-        // dd($array);
+        while (count($array) < 10) {
+           foreach ($peliculas as $key => $pelicula) {
+                array_push($array, $pelicula);
+                $peliculas->forget($keyP);
 
-        // for ($i=0; $i < count($array); $i++) { 
-        //     if ($array[$i] == $array [$i++]) {
-        //         $array[$i];
-        //     }
-        // }
+                if (count($array) > 9 ) {
+                    break;
+                }
+           }
+        }
 
-        // while (count($array) < 10) {
-        //    foreach ($peliculas as $key => $pelicula) {
-        //         array_push($array, $pelicula);
-        //         $peliculas->forget($keyP);
-
-        //         if (count($array) > 9 ) {
-        //             break;
-        //         }
-        //    }
-        // }
-
-        // while (count($array) > 10) {
-        //     array_pop($array);
-        // }
+        while (count($array) > 10) {
+            array_pop($array);
+        }
 
         $score = \App\Score::where('user_id', auth()->user()->id)->first();
 
@@ -131,7 +124,7 @@ class PasosController extends Controller
             }
         }
 
-    	return view('paso3', ['peliculas' => $peliculas, 'userGenres' => $userGenres, 'userTags' => $userTags]);
+    	return view('paso3', ['peliculas' => $array, 'userGenres' => $userGenres, 'userTags' => $userTags]);
 
     }
 

@@ -13,7 +13,7 @@
 		<h2 class="titulo-resultados"><span>¡Felicitaciones!</span> Estas son nuestras recomendaciones según tus gustos, prometemos no defraudarte :)</h2>
 
 		@foreach ($peliculas as $key => $pelicula)
-			<article class="tarjeta-resultados tarjeta{{ $key }}">
+			<article class="tarjeta-resultados resultado{{ $key }}">
 				<img src="{{ asset($pelicula->cover) }}" class="tarjeta-pelicula" alt="">
 				<div class="pelicula">
 				    <h2>{{ $pelicula->title }}</h2>
@@ -54,14 +54,38 @@
 				        	</a>
 				    	@endif
 				        
-				        <div class="lavi boton">
+				        <button onclick="ck(this)"class="lavi boton lv lvi{{ $key }}" value="{{ $key }}">
 				          La ví
-				        </div>
+				        </button>
 				    </div>
 				</div>
 			</article>
 		@endforeach
 
 	</section>
+
+	<script type="text/javascript">
+
+		var largo = {!! count($peliculas) !!};
+
+		for (var i = 3; i < largo; i++) {
+			document.querySelector('.resultado' + i).style.display = "none"
+		}
+
+		// Faltaria persistir la decisión de ya la vi del usuario
+
+		var clickT = 4
+		
+		var botonLV = document.querySelectorAll('.lv')
+
+		function ck (elemento) {
+			var tarjeta = document.querySelector('.resultado' + elemento.value)
+			tarjeta.style.display = 'none'
+
+			document.querySelector('.resultado' + clickT).style.display = "block"
+			clickT ++
+		}
+
+	</script>
 
 @endsection
