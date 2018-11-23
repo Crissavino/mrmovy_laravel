@@ -18,7 +18,17 @@
                 <header>
                     <a href="https://mrmovy.com"><img src="images/logo.png" alt="" class="logo"></a>
                     <div class="menu-movil">
-                      <img src="images/menu-movil.png" alt="">
+                        <img src="images/menu-movil.png" alt="">
+                    </div>
+                    <div class="desplegable-movil">
+                        <ul>
+                            <li><a href="#home">Inicio</a></li>
+                            <li><a href="#acercade">Acerca de</a></li>
+                            <li><a href="#FAQ">FAQ's</a></li>
+                            <li class="enlace-azul">
+                                <a href="/login" >Iniciar sesión</a>
+                            </li>
+                        </ul>
                     </div>
                     <nav class="menu-principal">
                         <ul>
@@ -26,7 +36,7 @@
                             <li><a href="#acercade">Acerca de</a></li>
                             <li class="borde-derecho-blanco"><a href="#FAQ">FAQ's</a></li>
                             <li class="enlace-azul">
-                              <a href="/login" >Iniciar sesión</a>
+                                <a href="/login" >Iniciar sesión</a>
                             </li>
                         </ul>
                     </nav>
@@ -124,6 +134,7 @@
             </footer>
         </div>
     </body>
-  <script src="js/efecto-ancla.js"></script>
-  <script src="js/numeros.js"></script>
+    <script src="js/efecto-ancla.js"></script>
+    <script src="js/numeros.js"></script>
+    <script src="js/menu-movil.js"></script>
 </html>

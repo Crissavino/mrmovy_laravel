@@ -4,6 +4,16 @@
         <div class="menu-movil">
             <img src="images/menu-movil.png" alt="">
         </div>
+        <div class="desplegable-movil">
+            <ul>
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#acercade">Acerca de</a></li>
+                <li><a href="#FAQ">FAQ's</a></li>
+                <li class="enlace-azul">
+                  <a href="/login" >Iniciar sesión</a>
+                </li>
+            </ul>
+        </div>
         @auth
             <nav class="menu-principal">
             <ul>

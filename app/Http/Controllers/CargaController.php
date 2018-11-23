@@ -13,11 +13,10 @@ class CargaController extends Controller
     	$actores = \App\Actor::all();
     	$productores = \App\Producer::all();
 
-    	// $datosActores = \App\Actos::all();
-    	// $datosProductores = \App\Producer::all();
-
     	return view('carga/peliculas', ['datosTags' => $datosTags,
-    						  'datosGeneros' => $datosGeneros, 'actores' => $actores, 'producers' => $productores]);
+    						  			'datosGeneros' => $datosGeneros, 
+    						  			'actores' => $actores, 
+    						  			'producers' => $productores]);
     }
 
     public function insertCarga()
@@ -99,6 +98,91 @@ class CargaController extends Controller
 
 		// return $path;
   //   }
+
+    public function editCarga($id)
+    {
+    	$datosTags = \App\Tag::all();
+    	$datosGeneros = \App\Genre::all();
+    	$actores = \App\Actor::all();
+    	$productores = \App\Producer::all();
+    	$pelicula = \App\Movie::find($id);
+
+    	return view('carga/peliculas_edit', ['datosTags' => $datosTags,
+    						  			'datosGeneros' => $datosGeneros, 
+    						  			'actores' => $actores, 
+    						  			'producers' => $productores,
+    						  			'pelicula' => $pelicula]);
+    }
+
+    public function updateCarga($id)
+    {
+
+    	$pelicula = \App\Movie::find($id);
+
+    	request()->validate(
+				    		[
+					    		// 'cover' => 'required|file|mimes:jpeg,jpg,png',
+					    		'title' => 'required',
+								'genre_id' => 'required',
+								'tag_id' => 'required',
+								'year' => 'required',
+								'length' => 'required',
+								'resume' => 'required',
+								'actor_id' => 'required',
+								'producer_id' => 'required',
+					    	],
+					    	[
+						    	'cover.required' => 'Esta campo es obligatorio',
+						    	'cover.mimes' => 'El cover solamente puede ser jpeg, jpg o png',
+						    	'title.required' => 'Esta campo es obligatorio',
+								'genre_id.required' => 'Esta campo es obligatorio',
+								'tag_id.required' => 'Esta campo es obligatorio',
+								'year.required' => 'Esta campo es obligatorio',
+								'length.required' => 'Esta campo es obligatorio',
+								'resume.required' => 'Esta campo es obligatorio',
+								'actor_id.required' => 'Esta campo es obligatorio',
+								'producer_id.required' => 'Esta campo es obligatorio',
+					    	]);
+
+		$data = request()->all();
+		// $data['user_id'] = $userId;
+		// dd();
+		if (request()->file('cover')) {
+			$titulo = str_slug($data['title']);
+
+			$titulo .=  '.' . request()->file('cover')->extension();
+
+			$path = request()->file('cover')->storeAs('public/images/covers', $titulo);
+
+			$path = str_replace('public', 'storage', $path);
+
+			$data['cover'] = $path;
+		}
+
+		$pelicula->update($data);
+
+		// $idUltimaPelicula = $guardoPelicula->id;
+
+		// $pelicula = \App\Movie::find($idUltimaPelicula);
+
+		$arrayGeneros = $data['genre_id'];
+
+		$guardoGeneros = $pelicula->genres()->sync($arrayGeneros);
+
+		$arrayActores = $data['actor_id'];
+
+		$guardoActores = $pelicula->actors()->sync($arrayActores);
+
+		$arrayProductores = $data['producer_id'];
+
+		$guardoProductores = $pelicula->producers()->sync($arrayProductores);
+
+		$arrayTags = $data['tag_id'];
+
+		$guardoTags = $pelicula->tags()->sync($arrayTags);
+
+		return redirect('carga');
+    }
 
     public function cargaActor()
     {

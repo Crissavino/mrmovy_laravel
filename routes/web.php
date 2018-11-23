@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('index', 'StaticController@index');
+
+
 Route::get('paso1', 'PasosController@createPaso1')->middleware('auth');
 Route::post('paso1', 'PasosController@insertPaso1');
 
@@ -30,6 +33,9 @@ Route::post('paso3Final', 'PasosController@insertFinal');
 
 Route::get('carga', 'CargaController@createCarga')->middleware('auth');
 Route::post('carga', 'CargaController@insertCarga');
+
+Route::get('carga/edicion/{id}', 'CargaController@editCarga')->middleware('auth');
+Route::put('carga/edicion/{id}', 'CargaController@updateCarga');
 
 Route::get('carga/actor', 'CargaController@cargaActor')->middleware('auth');
 Route::post('carga/actor', 'CargaController@insertActor');

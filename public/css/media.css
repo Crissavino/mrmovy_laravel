@@ -88,6 +88,30 @@
         position: absolute;
         right: 20px;
     }
+
+    header .desplegable-movil{
+        /*list-style: none;*/
+        /*text-decoration: none;*/
+        /*font-size:17px;*/
+        clear: both;
+        position: relative;
+        top: 10px;
+        overflow: hidden;
+    }
+
+    header .desplegable-movil ul li{
+        text-align: center;
+        padding: 0px 15px;
+
+    }
+
+    header .desplegable-movil ul li a{
+        list-style: none;
+        text-decoration: none;
+        font-size: 17px;
+        color: white;
+    }
+
     header .menu-principal {
         display: none;
     }
