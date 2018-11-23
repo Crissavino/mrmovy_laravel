@@ -76,6 +76,12 @@ class CreateDatabase extends Migration
             $table->smallInteger('actor_id');
         });
 
+        Schema::create('movie_user', function (Blueprint $table) {
+            $table->increments('id');
+            $table->smallInteger('user_id');
+            $table->smallInteger('movie_id');
+        });
+
          Schema::create('genre_movie', function (Blueprint $table) {
             $table->increments('id');
             $table->smallInteger('movie_id');
