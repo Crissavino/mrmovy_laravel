@@ -16,15 +16,16 @@
             <form method="post" action="{{ route('register') }}">
                 @csrf
                 <input type="text" class="" id="email" placeholder="Direccion de correo electrónico" name="email" value="{{ old('email') }}" >
-
+                <div class="invalid-feedback" style="color:red;";></div>
                 @if ($errors->has('email'))
                     {{ $errors->first('email') }}
                 @endif
 
                 <input type="password" class="" id="pass" placeholder="Escribe una contraseña" name="password" >
+                <div class="invalid-feedback" style="color:red;";></div>
 
                 <input type="password" class="" id="rpass"  placeholder="Repetí la contraseña" name="password_confirmation" >
-
+                <div class="invalid-feedback" style="color:red;";></div>
                 @if ($errors->has('password'))
                     {{ $errors->first('password') }}
                 @endif
@@ -35,4 +36,6 @@
           </div>
         </div>
     </section>
+
+ <script src="js/register.js"></script>
 @endsection

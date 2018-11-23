@@ -16,14 +16,14 @@
                 <form method="POST" id="login-form" action="{{ route('login') }}">
                     @csrf
                     <input type="text" class="" id="email" placeholder="Direccion de correo electrónico" name="email" value="{{ old('email') }}">
-                    <div class="invalid-feedback" style="color:red;padding-top:25px";></div>
+                    <div class="invalid-feedback" style="color:red;";></div>
                     
                     @if ($errors->has('email'))
                         {{ $errors->first('email') }}
                     @endif
 
                     <input type="password" class="" id="password" placeholder="Tu contraseña" name="password">
-                    <div class="invalid-feedback" style="color:red;padding-top:25px";></div>
+                    <div class="invalid-feedback" style="color:red;";></div>
 
                     @if ($errors->has('password'))
                         {{ $errors->first('password') }}

@@ -1,10 +1,12 @@
-window.onload = function() {
-
+window.onload = function(){
 	var mail = document.querySelector('input[name="email"]');
 
 	var pass = document.querySelector('input[name="password"]');
 
-	arrayForm = [mail, pass];
+	var rePass = document.querySelector('input[name="password_confirmation"]');
+
+	arrayForm = [mail, pass, rePass];
+
 
 	arrayForm.forEach(function(element, index){
 		addEventListener('submit', function(event){
@@ -19,7 +21,7 @@ window.onload = function() {
 				if (!(regexEmail.test(mail))) {
 					event.preventDefault();
 					var errores = document.querySelectorAll('.invalid-feedback');
-					errores[index].innerText = 'Debes ingresar un formato email validojs';
+					errores[index].innerText = 'Debes ingresar un formato email valido';
 				}else{
 					var errores = document.querySelectorAll('.invalid-feedback');
 					errores[index].innerText = '';
@@ -36,6 +38,17 @@ window.onload = function() {
 					var errores = document.querySelectorAll('.invalid-feedback');
 					errores[index].innerText = '';
 				}
+
+			}
+			else if (element.name == 'password_confirmation') {
+				if (rePass.value.trim() !== pass.value.trim()) {
+					event.preventDefault();
+					var errores = document.querySelectorAll('.invalid-feedback');
+					errores[index].innerText = 'Las contraseñas no coinciden';
+				}else{
+					var errores = document.querySelectorAll('.invalid-feedback');
+					errores[index].innerText = '';
+				}
 			}
 			else{
 				var errores = document.querySelectorAll('.invalid-feedback');
@@ -43,5 +56,4 @@ window.onload = function() {
 			}
 		});
 	});
-
 }
