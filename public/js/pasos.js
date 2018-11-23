@@ -102,6 +102,30 @@ function finalEncuesta () {
 	})
 }
 
+function actualizarView (movieId) {
+	var campos = {
+		movieId: movieId,
+	}
+
+	var datosDelFormulario = new FormData();
+	datosDelFormulario.append('datos', JSON.stringify(campos))
+
+	fetch("/insertar", { 
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
+		method: 'POST',
+		body: datosDelFormulario,
+	}
+	)
+	.then(function (response) {
+		return response.text();
+	})
+	.then(function (data) {
+		console.log(data)
+	})
+}
+
 var click = 0
 var nextClick = 1
 
@@ -154,6 +178,17 @@ var botonNoLaViOcho = document.querySelector('#no-vi7')
 var botonNoLaViNueve = document.querySelector('#no-vi8')
 var botonNoLaViDiez = document.querySelector('#no-vi9')
 
+var idUno = document.querySelector('#id0').innerText
+var idDos = document.querySelector('#id1').innerText
+var idTres = document.querySelector('#id2').innerText
+var idCuatro = document.querySelector('#id3').innerText
+var idCinco = document.querySelector('#id4').innerText
+var idSeis = document.querySelector('#id5').innerText
+var idSiete = document.querySelector('#id6').innerText
+var idOcho = document.querySelector('#id7').innerText
+var idNueve = document.querySelector('#id8').innerText
+var idDiez = document.querySelector('#id9').innerText
+
 
 botonLaViMeGustoUno.addEventListener('click', function(){ actualizarTarjeta(2) })
 botonLaViMeGustoDos.addEventListener('click', function(){ actualizarTarjeta(2) })
@@ -169,6 +204,7 @@ botonLaViMeGustoDiez.addEventListener('click', function () {
 	finalEncuesta()
 	window.location.href = "/resultados";
 })
+
 
 botonLaViMeDaIgualUno.addEventListener('click', function(){ actualizarTarjeta(1) })
 botonLaViMeDaIgualDos.addEventListener('click', function(){ actualizarTarjeta(1) })
@@ -214,5 +250,40 @@ botonNoLaViDiez.addEventListener('click', function () {
 	finalEncuesta()
 	window.location.href = "/resultados";
 })
+
+// ACTUALIZAR VISTA EN TABLA VIEWS
+
+	botonLaViMeGustoUno.addEventListener('click', function(){ actualizarView(idUno) })
+	botonLaViMeGustoDos.addEventListener('click', function(){ actualizarView(idDos) })
+	botonLaViMeGustoTres.addEventListener('click', function(){ actualizarView(idTres) })
+	botonLaViMeGustoCuatro.addEventListener('click', function(){ actualizarView(idCuatro) })
+	botonLaViMeGustoCinco.addEventListener('click', function(){ actualizarView(idCinco) })
+	botonLaViMeGustoSeis.addEventListener('click', function(){ actualizarView(idSeis) })
+	botonLaViMeGustoSiete.addEventListener('click', function(){ actualizarView(idSiete) })
+	botonLaViMeGustoOcho.addEventListener('click', function(){ actualizarView(idOcho) })
+	botonLaViMeGustoNueve.addEventListener('click', function(){ actualizarView(idNueve) })
+	botonLaViMeGustoDiez.addEventListener('click', function(){ actualizarView(idDiez) })
+
+	botonLaViMeDaIgualUno.addEventListener('click', function(){ actualizarView(idUno) })
+	botonLaViMeDaIgualDos.addEventListener('click', function(){ actualizarView(idDos) })
+	botonLaViMeDaIgualTres.addEventListener('click', function(){ actualizarView(idTres) })
+	botonLaViMeDaIgualCuatro.addEventListener('click', function(){ actualizarView(idCuatro) })
+	botonLaViMeDaIgualCinco.addEventListener('click', function(){ actualizarView(idCinco) })
+	botonLaViMeDaIgualSeis.addEventListener('click', function(){ actualizarView(idSeis) })
+	botonLaViMeDaIgualSiete.addEventListener('click', function(){ actualizarView(idSiete) })
+	botonLaViMeDaIgualOcho.addEventListener('click', function(){ actualizarView(idOcho) })
+	botonLaViMeDaIgualNueve.addEventListener('click', function(){ actualizarView(idNueve) })
+	botonLaViMeDaIgualDiez.addEventListener('click', function(){ actualizarView(idDiez) })
+
+	botonLaViNoMgUno.addEventListener('click', function(){ actualizarView(idUno) })
+	botonLaViNoMgDos.addEventListener('click', function(){ actualizarView(idDos) })
+	botonLaViNoMgTres.addEventListener('click', function(){ actualizarView(idTres) })
+	botonLaViNoMgCuatro.addEventListener('click', function(){ actualizarView(idCuatro) })
+	botonLaViNoMgCinco.addEventListener('click', function(){ actualizarView(idCinco) })
+	botonLaViNoMgSeis.addEventListener('click', function(){ actualizarView(idSeis) })
+	botonLaViNoMgSiete.addEventListener('click', function(){ actualizarView(idSiete) })
+	botonLaViNoMgOcho.addEventListener('click', function(){ actualizarView(idOcho) })
+	botonLaViNoMgNueve.addEventListener('click', function(){ actualizarView(idNueve) })
+	botonLaViNoMgDiez.addEventListener('click', function(){ actualizarView(idDiez) })
 
 tarjetaActual.style.display = ""

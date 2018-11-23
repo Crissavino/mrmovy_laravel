@@ -195,4 +195,12 @@ class PasosController extends Controller
 
     }
 
+    public function insertView()
+    {   
+        $datos = json_decode($_POST['datos'], true);
+        $userId = auth()->user()->id;
+        $usuario = \App\User::find($userId);
+        $guardoViews = $usuario->views()->attach($datos['movieId']);
+    }
+
 }

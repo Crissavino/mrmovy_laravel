@@ -42,4 +42,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Score');
     }
+
+    public function views()
+    {
+        return $this->belongsToMany('App\Movie');
+    }
 }

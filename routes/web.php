@@ -29,6 +29,9 @@ Route::post('paso3', 'PasosController@insertPaso3');
 Route::post('paso3Tag', 'PasosController@insertPaso3Tag');
 Route::post('paso3Final', 'PasosController@insertFinal');
 
+Route::post('insertar', 'PasosController@insertView');
+
+
 
 
 Route::get('carga', 'CargaController@createCarga')->middleware('auth');

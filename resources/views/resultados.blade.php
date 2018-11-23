@@ -54,7 +54,7 @@
 				        	</a>
 				    	@endif
 				        
-				        <button onclick="ck(this)"class="lavi boton lv lvi{{ $key }}" value="{{ $key }}">
+				        <button name="{{ $pelicula->id }}" onclick="ck(this)"class="lavi boton lv lvi{{ $key }}" value="{{ $key }}">
 				          La ví
 				        </button>
 				    </div>
@@ -65,6 +65,31 @@
 	</section>
 
 	<script type="text/javascript">
+
+		function actualizarView (movieId) {
+			var campos = {
+				movieId: movieId,
+			}
+
+			var datosDelFormulario = new FormData();
+			datosDelFormulario.append('datos', JSON.stringify(campos))
+
+			fetch("/insertar", { 
+					headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					},
+				method: 'POST',
+				body: datosDelFormulario,
+			}
+			)
+			.then(function (response) {
+				return response.text();
+			})
+			.then(function (data) {
+				console.log(data)
+			})
+
+		}
 
 		var largo = {!! count($peliculas) !!};
 
@@ -81,6 +106,8 @@
 		function ck (elemento) {
 			var tarjeta = document.querySelector('.resultado' + elemento.value)
 			tarjeta.style.display = 'none'
+
+			actualizarView(elemento.name)
 
 			document.querySelector('.resultado' + clickT).style.display = "block"
 			clickT ++
