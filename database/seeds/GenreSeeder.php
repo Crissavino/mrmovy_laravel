@@ -62,10 +62,6 @@ class GenreSeeder extends Seeder
         	],
 
         	[
-        		'name' => 'Superheroes'
-        	],
-
-        	[
         		'name' => 'Documental'
         	],
 

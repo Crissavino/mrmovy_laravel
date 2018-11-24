@@ -73,6 +73,18 @@ class TagSeeder extends Seeder
                 'name' => 'Psicologica'
             ],
 
+            [
+                'name' => 'Superheroes'
+            ],
+
+            [
+                'name' => 'Emocionante'
+            ],
+
+            [
+                'name' => 'Sorprendente'
+            ],
+
 
         ]);
     }

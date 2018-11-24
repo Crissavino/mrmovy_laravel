@@ -20,7 +20,7 @@ class CreateDatabase extends Migration
             $table->string('title');
             $table->string('cover');
             $table->smallInteger('year');
-            $table->smallInteger('length');
+            $table->string('length');
             $table->text('resume');
             $table->string('netflix')->nullable();
             $table->string('trailer')->nullable();
