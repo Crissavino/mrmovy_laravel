@@ -32,8 +32,6 @@ Route::post('paso3Final', 'PasosController@insertFinal');
 Route::post('insertar', 'PasosController@insertView');
 
 
-
-
 Route::get('carga', 'CargaController@createCarga')->middleware('auth');
 Route::post('carga', 'CargaController@insertCarga');
 
@@ -45,8 +43,6 @@ Route::post('carga/actor', 'CargaController@insertActor');
 
 Route::get('carga/productor', 'CargaController@cargaProductor')->middleware('auth');
 Route::post('carga/productor', 'CargaController@insertProductor');
-
-
 
 
 Auth::routes();

@@ -18,9 +18,13 @@
 				</div>
 			</a>
 
-	        <div class="boton-verde">
-	          Marcar como favorita
-	        </div>
+            @if (auth()->user()->is_admin)
+            	<a href="/carga/edicion/{{ $movie->id }}">
+			        <div class="boton-verde">
+			          Editar esta pelicula (admin)
+			        </div>
+		        </a>
+	        @endif
 
 	        @if ( $movie->netflix || $movie->trailer)
 	        	<div class="botones-extras">
@@ -39,7 +43,7 @@
 							</div>
 						</a>
 			    	@endif
-					
+
 	        	</div>
 	        @endif
 
