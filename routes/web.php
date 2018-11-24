@@ -38,6 +38,9 @@ Route::post('carga', 'CargaController@insertCarga');
 Route::get('carga/edicion/{id}', 'CargaController@editCarga')->middleware('auth');
 Route::put('carga/edicion/{id}', 'CargaController@updateCarga');
 
+Route::post('delete/{id}', 'CargaController@deleteMovie')->middleware('auth');
+
+
 Route::get('carga/actor', 'CargaController@cargaActor')->middleware('auth');
 Route::post('carga/actor', 'CargaController@insertActor');
 

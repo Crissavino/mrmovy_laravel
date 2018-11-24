@@ -214,4 +214,12 @@ class CargaController extends Controller
     	return redirect('carga/productor');
 
     }
+
+    public function deleteMovie($id)
+    {
+    	$movie = \App\Movie::find($id);
+    	$movie->delete();
+    	return redirect('resultados');
+
+    }
 }

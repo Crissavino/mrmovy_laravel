@@ -17,13 +17,19 @@
 					Volver a los resultados
 				</div>
 			</a>
-
             @if (auth()->user()->is_admin)
             	<a href="/carga/edicion/{{ $movie->id }}">
 			        <div class="boton-verde">
-			          Editar esta pelicula (admin)
+			          Editar esta pelicula
 			        </div>
 		        </a>
+	        @endif
+
+	        @if (auth()->user()->is_admin)
+		        <form action="/delete/{{ $movie->id }}" method="post">
+		        	@csrf
+		        	<button type="submit" class="boton-rojo" style="width: 100%;">Eliminar esta pelicula</button>
+		        </form>
 	        @endif
 
 	        @if ( $movie->netflix || $movie->trailer)

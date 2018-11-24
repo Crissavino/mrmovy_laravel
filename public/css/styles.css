@@ -77,6 +77,24 @@
     border-bottom: 5px solid #005f29;
   }
 
+  .boton-rojo {
+    background-color: #ff5c3b;
+    border-radius: 5px;
+    padding: 15px 20px;
+    border:0px;
+    margin-top: 15px;
+    border-bottom: 5px solid #ff0000;
+    display: inline-block;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+  .boton-rojo:hover {
+    background-color: #ff0000;
+    border-bottom: 5px solid #b80000;
+  }
+
   .boton-gris {
     background-color: #f4f4f4;
     border-radius: 5px;
