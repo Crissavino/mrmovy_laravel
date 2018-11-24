@@ -22,21 +22,28 @@
 	          Marcar como favorita
 	        </div>
 
-	        <div class="botones-extras">
+	        @if ( $movie->netflix || $movie->trailer)
+	        	<div class="botones-extras">
+			    	@if ($movie->netflix)
+						<a href="{{ $movie->netflix }}">
+							<div class="boton-gris">
+								<img src="/images/logo-netflix.png" alt="Icono para ver {{ $movie->name }} en netflix">
+							</div>
+						</a>
+			    	@endif
 
-				<a href="{{ $movie->netflix }}">
-					<div class="boton-gris">
-						<img src="/images/logo-netflix.png" alt="Icono para ver {{ $movie->name }} en netflix">
-					</div>
-				</a>
+			    	@if ($movie->trailer)
+						<a href="{{ $movie->trailer }}">
+							<div class="boton-gris trailer">
+								<img src="/images/ver-trailer.png" alt="">Trailer
+							</div>
+						</a>
+			    	@endif
+					
+	        	</div>
+	        @endif
 
-				<a href="{{ $movie->trailer }}">
-					<div class="boton-gris trailer">
-						<img src="/images/ver-trailer.png" alt="">Trailer
-					</div>
-				</a>
-
-	        </div>
+	        
 	    </div>
 	</div>
 

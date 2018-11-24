@@ -16,18 +16,18 @@
             <form method="post" action="{{ route('register') }}">
                 @csrf
                 <input type="text" class="" id="email" placeholder="Direccion de correo electrónico" name="email" value="{{ old('email') }}" >
-                <div class="invalid-feedback" style="color:red;";></div>
+                <div class="invalid-feedback" style="color:red;padding-bottom: 16px;"></div>
                 @if ($errors->has('email'))
-                    {{ $errors->first('email') }}
+                    <p style="color:red;padding-bottom: 16px;">{{ $errors->first('email') }}</p>
                 @endif
 
                 <input type="password" class="" id="pass" placeholder="Escribe una contraseña" name="password" >
-                <div class="invalid-feedback" style="color:red;";></div>
+                <div class="invalid-feedback" style="color:red;padding-bottom: 16px;"></div>
 
                 <input type="password" class="" id="rpass"  placeholder="Repetí la contraseña" name="password_confirmation" >
-                <div class="invalid-feedback" style="color:red;";></div>
+                <div class="invalid-feedback" style="color:red;padding-bottom: 16px;"></div>
                 @if ($errors->has('password'))
-                    {{ $errors->first('password') }}
+                    <p style="color:red;padding-bottom: 16px;">{{ $errors->first('password') }}</p>
                 @endif
 
                 <br>

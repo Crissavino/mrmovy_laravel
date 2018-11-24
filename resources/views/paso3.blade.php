@@ -29,7 +29,7 @@
 
 				@foreach ($peliculas as $key => $pelicula)
 
-					<p id="id{{ $key }}" style="">{{ $pelicula->id }}</p>
+					<p id="id{{ $key }}" style="display: none;">{{ $pelicula->id }}</p>
 					<div class="tarjeta" id="tarjeta{{ $key }}" style="display: none;">
 						<div class="c1">
 							<img src="{{ asset($pelicula->cover) }}">

@@ -97,8 +97,6 @@
 			document.querySelector('.resultado' + i).style.display = "none"
 		}
 
-		// Faltaria persistir la decisión de ya la vi del usuario
-
 		var clickT = 4
 		
 		var botonLV = document.querySelectorAll('.lv')
